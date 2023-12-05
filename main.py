@@ -87,9 +87,12 @@ class ImageFilterApp:
         self.canvas.itemconfig(self.image_id, image=self.canvas_image)
 
     def save_image(self):
-        ps_data = self.canvas.postscript(colormode="color")
-        img = Image.open(io.BytesIO(ps_data.encode("utf-8")))
-        img.save("Images/Filtered/filtered_Image.png", format="PNG")
+        file_path = filedialog.asksaveasfilename(defaultextension=".png", filetypes=[("PNG files", "*.png")])
+
+        if file_path:
+            post_script_data = self.canvas.postscript(colormode="color")
+            wanted_image = Image.open(io.BytesIO(post_script_data.encode("utf-8")))
+            wanted_image.save(file_path, format="PNG")
 
 if __name__ == "__main__":
     ctk.set_appearance_mode("default")
