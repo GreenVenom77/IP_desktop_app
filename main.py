@@ -1,5 +1,4 @@
 import io
-import tkinter as tk
 import customtkinter as ctk
 from customtkinter import filedialog
 from PIL import Image, ImageTk, ImageFilter
